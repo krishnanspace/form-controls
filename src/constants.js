@@ -10,6 +10,7 @@ const Constants = {
     minMaxRange: 'minMaxRange',
     allowFutureDates: 'allowFutureDates',
     dateTimeError: 'dateTimeError',
+    hyperLinkError: 'hyperLinkError',
   },
   errorTypes: {
     warning: 'warning',

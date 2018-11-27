@@ -61,6 +61,15 @@ export class Validator {
     return undefined;
   }
 
+  static hyperLinkError(obsValue) {
+    if (isUndefined(obsValue)) return undefined;
+    var res = obsValue.match(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/);
+    if(res == null) {
+      return new Error({ message: constants.validations.hyperLinkError });
+    }
+      return undefined;
+  }
+
   static getErrors(controlDetails) {
     const { validations, value, params } = controlDetails;
     const errors = map(validations, (propertyName) => {
@@ -84,4 +93,6 @@ Validator.propertyValidators = {
     (obsVal, params) => Validator.minMaxRange(obsVal, params),
   [constants.validations.allowFutureDates]:
     (obsValue) => Validator.allowFutureDates(obsValue),
+    [constants.validations.hyperLinkError]:
+    (obsValue) => Validator.hyperLinkError(obsValue),
 };

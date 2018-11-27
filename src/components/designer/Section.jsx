@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react';
 import ComponentStore from 'src/helpers/componentStore';
 import { SectionMapper } from '../../mapper/SectionMapper';
 import { GridDesigner as Grid } from 'components/designer/Grid.jsx';

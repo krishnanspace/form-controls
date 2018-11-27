@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react';
 import { CellDesigner } from 'components/designer/Cell.jsx';
 import Constants from 'src/constants';
 import map from 'lodash/map';

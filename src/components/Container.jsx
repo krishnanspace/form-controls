@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { PropTypes, Component } from 'react';
 import { displayRowControls, getGroupedControls } from '../helpers/controlsParser';
 import isEmpty from 'lodash/isEmpty';
 import ControlRecordTreeBuilder from 'src/helpers/ControlRecordTreeBuilder';
@@ -168,8 +167,8 @@ Container.propTypes = {
   collapse: PropTypes.bool.isRequired,
   locale: PropTypes.string,
   metadata: PropTypes.shape({
-    controls: PropTypes.arrayOf(
-      PropTypes.shape({
+    controls: React.PropTypes.arrayOf(
+      React.PropTypes.shape({
         type: PropTypes.string.isRequired,
       })).isRequired,
     id: PropTypes.number.isRequired,

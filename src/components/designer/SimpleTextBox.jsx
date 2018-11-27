@@ -1,21 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import ComponentStore from 'src/helpers/componentStore';
+import Textarea from 'react-textarea-autosize';
 
-export class DateTimeDesigner extends Component {
+export class SimpleTextBoxDesigner extends Component {
   getJsonDefinition() {
     return this.props.metadata;
   }
 
   render() {
-    return (<div>
-        <input type="date" />
-        <input type="time" />
-      </div>
+    return (
+        <div className="obs-comment-section-wrap">
+        <Textarea />
+        </div>
     );
   }
 }
 
-DateTimeDesigner.propTypes = {
+SimpleTextBoxDesigner.propTypes = {
   metadata: PropTypes.shape({
     concept: PropTypes.object.isRequired,
     displayType: PropTypes.string,
@@ -26,25 +27,14 @@ DateTimeDesigner.propTypes = {
 };
 
 const descriptor = {
-  control: DateTimeDesigner,
+  control: SimpleTextBoxDesigner,
   designProperties: {
     isTopLevelComponent: false,
   },
   metadata: {
     attributes: [
-      {
-        name: 'properties',
-        dataType: 'complex',
-        attributes: [
-          {
-            name: 'allowFutureDates',
-            dataType: 'boolean',
-            defaultValue: false,
-          },
-        ],
-      },
     ],
   },
 };
 
-ComponentStore.registerDesignerComponent('dateTime', descriptor);
+ComponentStore.registerDesignerComponent('simpleTextBox', descriptor);

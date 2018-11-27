@@ -9,5 +9,8 @@ export function getValidations(properties, conceptProperties) {
   if (properties && properties.allowFutureDates === false) {
     validations.push(constants.validations.allowFutureDates);
   }
+  if (properties && properties.AcceptHyperlinks === true) {
+    validations.push(constants.validations.hyperLinkError);
+  }
   return validations;
 }

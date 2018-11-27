@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react';
 import ComponentStore from 'src/helpers/componentStore';
 import map from 'lodash/map';
 import find from 'lodash/find';
@@ -100,6 +99,7 @@ export class CodedControl extends Component {
   }
 
   render() {
+    console.log(JSON.stringify(this.props));
     const { properties } = this.props;
     const displayType = this._getDisplayType(properties);
     const registeredComponent = ComponentStore.getRegisteredComponent(displayType);
@@ -124,7 +124,7 @@ CodedControl.propTypes = {
 };
 
 CodedControl.contextTypes = {
-  intl: PropTypes.object.isRequired,
+  intl: React.PropTypes.object.isRequired,
 };
 
 ComponentStore.registerComponent('Coded', CodedControl);

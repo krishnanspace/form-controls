@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react';
 import ComponentStore from 'src/helpers/componentStore';
 import { ObsGroupMapper } from '../../mapper/ObsGroupMapper';
 import { GridDesigner as Grid } from 'components/designer/Grid.jsx';

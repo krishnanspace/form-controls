@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import { Label } from 'components/Label.jsx';
 import ComponentStore from 'src/helpers/componentStore';

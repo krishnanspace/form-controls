@@ -1,21 +1,23 @@
 import React, { Component, PropTypes } from 'react';
 import ComponentStore from 'src/helpers/componentStore';
 
-export class DateTimeDesigner extends Component {
+export class HyperlinkTextBoxDesigner extends Component {
   getJsonDefinition() {
     return this.props.metadata;
   }
 
   render() {
-    return (<div>
-        <input type="date" />
-        <input type="time" />
-      </div>
+    return (
+        <div className="obs-comment-section-wrap">
+        <input type="url" name="url" id="url"
+               placeholder="https://example.com"
+               pattern="https://.*" size="50" />
+        </div>
     );
   }
 }
 
-DateTimeDesigner.propTypes = {
+HyperlinkTextBoxDesigner.propTypes = {
   metadata: PropTypes.shape({
     concept: PropTypes.object.isRequired,
     displayType: PropTypes.string,
@@ -26,25 +28,14 @@ DateTimeDesigner.propTypes = {
 };
 
 const descriptor = {
-  control: DateTimeDesigner,
+  control: HyperlinkTextBoxDesigner,
   designProperties: {
     isTopLevelComponent: false,
   },
   metadata: {
     attributes: [
-      {
-        name: 'properties',
-        dataType: 'complex',
-        attributes: [
-          {
-            name: 'allowFutureDates',
-            dataType: 'boolean',
-            defaultValue: false,
-          },
-        ],
-      },
     ],
   },
 };
 
-ComponentStore.registerDesignerComponent('dateTime', descriptor);
+ComponentStore.registerDesignerComponent('hyperlinkTextBox', descriptor);

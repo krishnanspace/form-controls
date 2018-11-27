@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react';
 import ComponentStore from 'src/helpers/componentStore';
 import Textarea from 'react-textarea-autosize';
 
@@ -8,12 +7,25 @@ export class TextBoxDesigner extends Component {
     return this.props.metadata;
   }
 
+  _getDisplayType(properties) {
+    if (properties.AcceptHyperlinks) {
+      return 'hyperlinkTextBox';
+    } 
+    return 'simpleTextBox';
+  }
+
   render() {
-    return (
-        <div className="obs-comment-section-wrap">
-        <Textarea />
-        </div>
-    );
+    const { metadata, metadata: { concept } } = this.props;
+    const displayType = this._getDisplayType(metadata.properties);
+    const registeredComponent = ComponentStore.getDesignerComponent(displayType);
+    if (registeredComponent) {
+      return React.createElement(registeredComponent.control, {
+        asynchronous: false,
+        labelKey: 'name',
+        ref: this.storeChildRef,
+      });
+    }
+    return null;
   }
 }
 
@@ -37,7 +49,13 @@ const descriptor = {
       {
         name: 'properties',
         dataType: 'complex',
-        attributes: [],
+        attributes: [
+          {
+            name: 'AcceptHyperlinks',
+            dataType: 'boolean',
+            defaultValue: false,
+          },
+        ],
       },
     ],
   },
